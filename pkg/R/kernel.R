@@ -13,8 +13,6 @@ WIRE_DELIM <- charToRaw("<IDS|MSG>")
 
 kernel <- new.env()
 
-fn_kernel_logfile <- file.path(tempdir(),paste0("RKernel_", Sys.info()[["effective_user"]], ".log"))
-
 #' The Kernel Class
 #'
 #' @description An object of this class handles the low-level communication with
@@ -56,6 +54,7 @@ Kernel <- R6Class("Kernel",
       replace_in_package("base","print",evaluator$print)
       replace_in_package("base","cat",evaluator$cat)
       replace_in_package("tools","httpd",evaluator$httpd)
+      fn_kernel_logfile <- file.path(tempdir(check=TRUE),"RKernel.log")
       private$logfile <- file(fn_kernel_logfile,"a")
       # private$logfile <- stderr()
       # private$logfile <- socketConnection(port=6111)
