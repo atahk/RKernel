@@ -13,7 +13,7 @@ WIRE_DELIM <- charToRaw("<IDS|MSG>")
 
 kernel <- new.env()
 
-fn_kernel_logfile <- file.path(dirname(tempdir()),"RKernel.log")
+fn_kernel_logfile <- file.path(dirname(tempdir()),paste0("RKernel_", Sys.info()[["user"]], ".log"))
 
 #' The Kernel Class
 #'
